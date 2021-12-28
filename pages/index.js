@@ -14,6 +14,7 @@ export default function Home() {
           bgImage={"url('/images/hero-bg.jpg')"}
           bgRepeat={"no-repeat"}
           bgSize={"cover"}
+          objectFit={"contain"}
           bgPos={"center"}
           zIndex={"-1"}
           w={"inherit"}
