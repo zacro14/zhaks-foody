@@ -5,7 +5,15 @@ import { cuisines } from "../data/cuisines";
 const FoodCategory = () => {
   return (
     <>
-      <Box px={"20"} h={"lg"}>
+      <Box
+        // h={{
+        //   base: "auto",
+        //   sm: "auto",
+        //   md: "auto",
+        //   lg: "auto",
+        // }}
+        px={{ base: "2", sm: "5", md: "10", lg: "20" }}
+      >
         <Heading mt={"7"} textTransform={"capitalize"}>
           many choices just for{" "}
           <Text as={"span"} color={"red.500"}>
@@ -15,10 +23,14 @@ const FoodCategory = () => {
         </Heading>
 
         <Grid
-          templateColumns="repeat(4, 1fr)"
+          templateColumns={{
+            base: "repeat(2, 1fr)",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
+            lg: "repeat(4, 1fr)",
+          }}
           rowGap={"1"}
           columnGap={"5"}
-          h={"36"}
         >
           {" "}
           {cuisines.map((cuisine) => (
