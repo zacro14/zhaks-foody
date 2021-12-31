@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import Head from "next/head";
 import FoodCategory from "../components/FoodCategory";
 import HeroSection from "../components/HeroSection";
@@ -26,8 +27,11 @@ export default function Home() {
           href="/favicon-16x16.png"
         />
       </Head>
+
       <HeroSection />
-      <FoodCategory />
+      <Box id="food cuisine" pos={"relative"} h={"auto"}>
+        <FoodCategory />
+      </Box>
     </>
   );
 }
