@@ -1,9 +1,10 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "../components/Layout";
+import theme from "../components/Theme";
 
-function MyApp({ Component, pageProps }) {
+function ZhacksFoody({ Component, pageProps }) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
@@ -11,4 +12,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default ZhacksFoody;

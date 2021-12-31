@@ -1,0 +1,51 @@
+export const cuisines = [
+  {
+    _id: 1,
+    title: "Filipino",
+    tag: "discounted",
+    hasBadge: true,
+    image: "/images/filipino-food.jpeg",
+  },
+  {
+    _id: 2,
+    title: "Chinese",
+    tag: "discounted",
+    hasBadge: false,
+    image: "/images/chinese-food.jpg",
+  },
+  {
+    _id: 3,
+    title: "Japanese",
+    tag: "discounted",
+    hasBadge: false,
+    image: "/images/japanese-food.jpeg",
+  },
+  {
+    _id: 4,
+    title: "Korean",
+    tag: "discounted",
+    hasBadge: true,
+    image: "/images/korean-food.jpg",
+  },
+  {
+    _id: 5,
+    title: "Chicken",
+    tag: "discounted",
+    hasBadge: false,
+    image: "/images/chicken-food.jpg",
+  },
+  {
+    _id: 6,
+    title: "fast food",
+    tag: "discounted",
+    hasBadge: true,
+    image: "/images/fast-food.jpg",
+  },
+  {
+    _id: 7,
+    title: "burger",
+    tag: "10 % off",
+    hasBadge: false,
+    image: "/images/burger-food.webp",
+  },
+];

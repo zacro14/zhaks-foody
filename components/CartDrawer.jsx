@@ -3,16 +3,14 @@ import {
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  Input,
   Button,
   Heading,
-  Center,
   Text,
+  Container,
+  Image,
 } from "@chakra-ui/react";
-import Link from "next/link";
 
 const CartDrawer = ({ isOpen, onClose, btnRef }) => {
   return (
@@ -26,8 +24,14 @@ const CartDrawer = ({ isOpen, onClose, btnRef }) => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>My Cart</DrawerHeader>
+          <DrawerCloseButton
+            left={"xl"}
+            right={"unset"}
+            mx={"3"}
+            size={"lg"}
+            _focus={{ borderColor: "none" }}
+            _hover={{ background: "none" }}
+          />
 
           <DrawerBody
             display={"flex"}
@@ -35,14 +39,17 @@ const CartDrawer = ({ isOpen, onClose, btnRef }) => {
             justifyContent={"center"}
             flexDirection={"column"}
           >
+            <Container w={"xs"}>
+              <Image src="/images/Shopping cart.svg" alt="cart" />
+            </Container>
             <Heading as={"h5"} fontWeight={"light"}>
               Grab some foods now!
             </Heading>
             <Text as={"small"} color={"gray.400"}>
               Your orders will appeare here
             </Text>
-            <Button boxShadow={"lg"} marginY={"4"}>
-              <Link href={"/"}>Continue browsing</Link>
+            <Button boxShadow={"lg"} marginY={"4"} onClick={onClose}>
+              Continue browsing
             </Button>
           </DrawerBody>
         </DrawerContent>
