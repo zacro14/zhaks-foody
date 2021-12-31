@@ -1,3 +1,7 @@
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { AiOutlineShopping } from "react-icons/ai";
+import CartDrawer from "./CartDrawer";
 import {
   Badge,
   Box,
@@ -10,10 +14,6 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { AiOutlineShopping } from "react-icons/ai";
-import CartDrawer from "./CartDrawer";
 
 const Navbar = () => {
   const [navabar, setNavbar] = useState(false);
@@ -37,7 +37,7 @@ const Navbar = () => {
     <>
       <Flex
         as={"nav"}
-        px={"20"}
+        px={{ base: "2", sm: "5", md: "10", lg: "20" }}
         py={"5"}
         background={navabar ? "white" : "transparent"}
         position={navabar ? "fixed" : "absolute"}
@@ -49,7 +49,7 @@ const Navbar = () => {
         animation={navabar ? "0.3s ease 0s 1 normal forwards  running" : "none"}
       >
         <Link href={"/"} passHref={true}>
-          <Box as={"a"} display={"flex"}>
+          <Box as={"a"} display={"flex"} alignItems={"center"}>
             {/* <Image src={"/logo/logo-1.svg"} alt="logo" w={"auto"} h={"20"} /> */}
             <Heading color={navabar ? "black" : "white"}>Zhack&apos;s</Heading>
             <Text as={"span"} color={"red.400"} fontSize={"2xl"}>

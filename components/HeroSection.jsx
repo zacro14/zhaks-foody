@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Heading, Input } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Input } from "@chakra-ui/react";
 
 const HeroSection = () => {
   return (
@@ -18,29 +18,47 @@ const HeroSection = () => {
         />
         <Box
           position={"absolute"}
-          bottom={"20%"}
+          bottom={{ base: "5%", sm: "15%", md: "20%" }}
           display={"grid"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          width={"100%"}
+          px={{ base: "2", sm: "5", md: "10", lg: "20" }}
+          width={"full"}
         >
-          <Heading color={"white"} fontWeight={"normal"}>
+          <Heading
+            color={"white"}
+            fontSize={{ base: "24px", md: "40px", lg: "45px" }}
+            fontWeight={{ base: "normal", sm: "light", md: "normal" }}
+          >
             Explore the best foods in the Philippines
           </Heading>
           <Flex
-            w={"container.md"}
+            w={{
+              base: "full",
+              md: "full",
+              lg: "full",
+              xl: "full",
+            }}
             mt={"10"}
             bgColor={"white"}
+            rounded={"md"}
             p={"5"}
             boxShadow={"xl"}
+            flexDirection={{
+              base: "column",
+              sm: "row",
+              md: "row",
+              lg: "row",
+            }}
           >
             <Input
               _focus={{ borderColor: "red.500" }}
               placeholder={"Enter your street and house number"}
+              mb={{ base: "2", sm: null, md: null }}
+              h={"12"}
             ></Input>
             <Button
-              mx={"2"}
+              mx={{ base: null, sm: "2" }}
               px={"10"}
+              h={"12"}
               bgColor={"red.500"}
               color={"white"}
               _hover={{ opacity: ".9" }}

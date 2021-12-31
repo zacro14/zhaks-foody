@@ -1,6 +1,9 @@
+import { MdOutlineFacebook } from "react-icons/md";
+import FooterLinks from "./FooterLinks";
+import { AiFillTwitterCircle, AiOutlineWechat } from "react-icons/ai";
 import {
   Box,
-  Container,
+  Center,
   Divider,
   Flex,
   Grid,
@@ -8,30 +11,23 @@ import {
   Icon,
   Text,
 } from "@chakra-ui/react";
-import {
-  AiFillTwitterCircle,
-  AiOutlineTwitter,
-  AiOutlineWechat,
-  AiOutlineWhatsApp,
-} from "react-icons/ai";
-import { MdOutlineFacebook } from "react-icons/md";
-import FooterLinks from "./FooterLinks";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+  console.log(year);
   return (
     <>
       <Box
-        alignItems={"center"}
-        justifyContent={"center"}
         bgColor={"gray.100"}
-        height={"auto"}
         as="footer"
+        h={"auto"}
+        px={{ base: "2", sm: "5", md: "10", lg: "20" }}
       >
-        <Box marginX={"20"} display={"flex"} alignItems={"center"}>
+        <Box display={"flex"} alignItems={"center"}>
           <Box
             display={"flex"}
             color={"gray.600"}
-            py={"10"}
+            py={{ base: "4", sm: "10", md: "10" }}
             fontWeight={"bold"}
             fontSize={"2xl"}
           >
@@ -42,7 +38,17 @@ const Footer = () => {
           </Box>
         </Box>
         <Divider borderColor={"gray.300"} />
-        <Grid templateColumns={"repeat(4, 1fr)"} pt={"10"} px={"20"} h={"xs"}>
+        <Grid
+          templateColumns={{
+            base: "repeat(2, 1fr)",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(4, 1fr)",
+          }}
+          gap={{ base: "none", md: "5" }}
+          rowGap={"5"}
+          mt={"5"}
+          // px={{ base: "2", sm: "10", md: "10", lg: "20" }}
+        >
           <GridItem color={"gray.700"}>
             <Box
               fontSize={"md"}
@@ -52,7 +58,7 @@ const Footer = () => {
             >
               Popular Cuisines
             </Box>
-            <Box mt={"5"}>
+            <Box mt={{ base: "2", sm: "2", md: "5" }}>
               <FooterLinks props={"Chinese Food"} params={"Cuisine/Chinese"} />
               <FooterLinks props={"Filipino Food"} />
               <FooterLinks props={"Japanese Food"} />
@@ -88,7 +94,7 @@ const Footer = () => {
                 </Text>
               </Box>
             </Box>
-            <Box mt={"5"}>
+            <Box mt={{ base: "2", sm: "2", md: "5" }}>
               <FooterLinks props={"Who We Are"} />
               <FooterLinks props={"Careers"} />
               <FooterLinks props={"Blog"} />
@@ -102,7 +108,7 @@ const Footer = () => {
             >
               For you
             </Box>
-            <Box mt={"5"}>
+            <Box mt={{ base: "2", sm: "2", md: "5" }}>
               <FooterLinks props={"FAQ"} />
               <FooterLinks props={"Privacy"} />
               <FooterLinks props={"Terms"} />
@@ -115,7 +121,7 @@ const Footer = () => {
               fontWeight={"semibold"}
             >
               Social Link
-              <Flex alignItems={"center"} mt={"5"}>
+              <Flex alignItems={"center"} mt={{ base: "2", sm: "2", md: "5" }}>
                 <Box
                   pr={"4"}
                   color={"facebook.500"}
@@ -141,6 +147,26 @@ const Footer = () => {
             </Box>
           </GridItem>
         </Grid>
+        <Center py={"5"}>
+          <Box
+            textTransform={"none"}
+            ml={"3"}
+            fontSize={"md"}
+            fontWeight={"normal"}
+          >
+            &copy; Zhack&rsquo;s
+          </Box>
+          <Text
+            as={"span"}
+            color={"red.500"}
+            fontWeight={"normal"}
+            pr={"2"}
+            textTransform={"none"}
+          >
+            Foody
+          </Text>
+          {year}
+        </Center>
       </Box>
     </>
   );
