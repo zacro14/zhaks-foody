@@ -15,14 +15,12 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-const Navbar = () => {
-  const [navabar, setNavbar] = useState(false);
+const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnCart = useRef();
-
+  const [navbar, setNavbar] = useState(false);
   const scrollBehavior = () => {
-    console.log(window.scrollY);
-    if (window.scrollY >= 100) {
+    if (window.scrollY > -0) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -31,6 +29,10 @@ const Navbar = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", scrollBehavior);
+
+    return () => {
+      window.removeEventListener("scroll", scrollBehavior);
+    };
   }, []);
 
   return (
@@ -39,19 +41,18 @@ const Navbar = () => {
         as={"nav"}
         px={{ base: "2", sm: "5", md: "10", lg: "20" }}
         py={"5"}
-        background={navabar ? "white" : "transparent"}
-        position={navabar ? "fixed" : "absolute"}
-        top={0}
+        background={"white"}
+        position={navbar ? "fixed" : "relative"}
+        top={navbar ? 0 : null}
         w={"full"}
-        zIndex={1}
-        boxShadow={navabar ? "md" : null}
+        zIndex={99}
+        boxShadow={navbar ? "md" : "none"}
         transition={"all 0.2s "}
-        animation={navabar ? "0.3s ease 0s 1 normal forwards  running" : "none"}
       >
         <Link href={"/"} passHref={true}>
           <Box as={"a"} display={"flex"} alignItems={"center"}>
             {/* <Image src={"/logo/logo-1.svg"} alt="logo" w={"auto"} h={"20"} /> */}
-            <Heading color={navabar ? "black" : "white"}>Zhack&apos;s</Heading>
+            <Heading color={"black"}>Zhack&apos;s</Heading>
             <Text as={"span"} color={"red.400"} fontSize={"2xl"}>
               Foody
             </Text>
@@ -100,4 +101,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;
