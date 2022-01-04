@@ -1,35 +1,30 @@
 import { StarIcon } from "@chakra-ui/icons";
-
-import {
-  Badge,
-  Box,
-  Flex,
-  Heading,
-  Image,
-  Spacer,
-  Text,
-} from "@chakra-ui/react";
+import { Badge, Box, Flex, Heading, Spacer, Text } from "@chakra-ui/react";
+import Image from "next/image";
 
 const Cuisine = ({ data }) => {
   return (
     <>
-      <Box my={"5"} _hover={{ cursor: "pointer" }}>
+      <Box my={{ base: null, md: "5", lg: "5" }} _hover={{ cursor: "pointer" }}>
         <Flex flexDirection={"column"}>
           <Box
             bgColor={"gray.100"}
-            h={"auto"}
-            rounded={"md"}
+            w={"full"}
+            h={{ base: "44", lg: "56" }}
             mb={"2"}
             overflow={"hidden"}
+            pos={"relative"}
           >
             <Image
-              rounded={"md"}
               src={data.image}
               alt={data.key}
-              height={"full"}
-              width={"full"}
-              fit={"cover"}
-              fallbackSrc={"/images/placeholder.avif"}
+              layout={"fill"}
+              objectFit={"cover"}
+              placeholder={"blur"}
+              blurDataURL={data.image}
+              quality={100}
+
+              // fallbackSrc={"/images/placeholder.avif"}
             />
           </Box>
           <Box display={"flex"}>
@@ -61,8 +56,8 @@ const Cuisine = ({ data }) => {
             <Text
               as={"span"}
               pt={"5"}
-              textTransform={"lowercase"}
-              fontWeight={"light"}
+              textTransform={"capitalize"}
+              fontWeight={"normal"}
               fontSize={"small"}
               color={"gray.600"}
               isTruncated
