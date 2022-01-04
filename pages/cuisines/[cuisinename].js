@@ -9,26 +9,32 @@ import { useRouter } from "next/router";
 
 const Cuisine = ({ restaurant }) => {
   const router = useRouter();
-
   return (
     <>
       <Head>
         <title> Zhacks Foody | {router.query.cuisinename} </title>
       </Head>
-      <Box as={"main"} pos={"relative"} zIndex={0} px={"20"} py={"10"}>
-        <Heading py={"5"}>
+      <Box
+        as={"main"}
+        pos={"relative"}
+        zIndex={0}
+        px={{ base: "2", md: "10", lg: "20" }}
+        py={"10"}
+      >
+        <Heading>
           Choose the best{" "}
           <Text as={"span"} color={"red.500"} textTransform={"capitalize"}>
-            burgers
-          </Text>
+            {router.query.cuisinename}
+          </Text>{" "}
+          Foods
         </Heading>
         <Grid
           templateColumns={{
             base: "repeat(1, 1fr)",
-            md: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
             lg: "repeat(4, 1fr)",
           }}
-          gap={"5"}
+          gap={{ base: null, md: "5", lg: "6" }}
         >
           {restaurant.map((burger) => (
             <GridItem
