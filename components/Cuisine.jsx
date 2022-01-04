@@ -33,8 +33,13 @@ const Cuisine = ({ data }) => {
             />
           </Box>
           <Box display={"flex"}>
-            <Heading isTruncated fontSize={16} w={"max-content"}>
-              {data.restaurant + " "}-{" " + data.branchname}
+            <Heading
+              textTransform={"capitalize"}
+              isTruncated
+              fontSize={16}
+              w={"max-content"}
+            >
+              {data.name + " "}-{" " + data.branch}
             </Heading>
             <Spacer />
             <Badge
