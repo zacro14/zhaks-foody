@@ -21,7 +21,7 @@ const Navbar = () => {
   const btnCart = useRef();
 
   const scrollBehavior = () => {
-    if (window.scrollY > 0) {
+    if (window.scrollY > 70) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -30,6 +30,9 @@ const Navbar = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", scrollBehavior);
+    return () => {
+      window.removeEventListener("scroll", scrollBehavior);
+    };
   }, []);
 
   return (
@@ -44,8 +47,9 @@ const Navbar = () => {
         w={"full"}
         zIndex={1}
         boxShadow={navabar ? "md" : null}
-        transition={"all 0.2s "}
-        animation={navabar ? "0.3s ease 0s 1 normal forwards  running" : "none"}
+        // transition={"all 0.2s "}
+        transform={navabar ? "translateY(0)" : "translateY(20%)"}
+        transition={"transform 0.2s ease-in 0s"}
       >
         <Link href={"/"} passHref={true}>
           <Box as={"a"} display={"flex"} alignItems={"center"}>
