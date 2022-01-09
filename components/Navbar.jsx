@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { AiOutlineShopping } from "react-icons/ai";
 import CartDrawer from "./CartDrawer";
+import { AiOutlineShopping } from "react-icons/ai";
 import {
   Badge,
   Box,

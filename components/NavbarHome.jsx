@@ -15,7 +15,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-const Navbar = () => {
+const NavbarHome = () => {
   const [navabar, setNavbar] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnCart = useRef();
@@ -103,4 +103,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarHome;
