@@ -6,7 +6,7 @@ import { db } from "../lib/firebase.config";
 import FoodCategory from "../components/FoodCategory";
 import HeroSection from "../components/HeroSection";
 import Layout from "../components/Layout";
-import NavbarHome from "../components/NavbarHome";
+
 import { Box } from "@chakra-ui/react";
 
 export default function Home({ cuisines }) {
@@ -29,12 +29,7 @@ export default function Home({ cuisines }) {
 }
 
 Home.getLayout = (page) => {
-  return (
-    <Layout>
-      <NavbarHome />
-      {page}
-    </Layout>
-  );
+  return <Layout>{page}</Layout>;
 };
 
 export const getStaticProps = async () => {
