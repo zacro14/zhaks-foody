@@ -8,11 +8,14 @@ https://stackoverflow.com/questions/69078144/next-js-context-provider-wrapping-a
 */
 
 function ZhacksFoody({ Component, pageProps }) {
-  const getLayout =
-    Component.getLayout || ((page) => <MainLayout>{page}</MainLayout>);
+  const getLayout = Component.getLayout || ((page) => page);
   return (
     <ChakraProvider theme={theme}>
-      {getLayout(<Component {...pageProps} />)}
+      {getLayout(
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
+      )}
     </ChakraProvider>
   );
 }
