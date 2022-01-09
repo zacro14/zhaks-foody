@@ -1,0 +1,21 @@
+[debug] [2022-01-09T07:18:35.054Z] ----------------------------------------------------------------------
+[debug] [2022-01-09T07:18:35.056Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\PC\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-01-09T07:18:35.057Z] CLI Version:   10.0.1
+[debug] [2022-01-09T07:18:35.057Z] Platform:      win32
+[debug] [2022-01-09T07:18:35.057Z] Node Version:  v14.17.5
+[debug] [2022-01-09T07:18:35.058Z] Time:          Sun Jan 09 2022 15:18:35 GMT+0800 (Singapore Standard Time)
+[debug] [2022-01-09T07:18:35.059Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-01-09T07:18:35.070Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-01-09T07:18:35.070Z] > authorizing via signed-in user (sacrojunel@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\PC\Desktop\Web Development\Projects\nextjs-food-delivery\zhaks-foody
+
