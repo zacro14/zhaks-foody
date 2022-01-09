@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { StarIcon } from "@chakra-ui/icons";
 import { Badge, Box, Flex, Heading, Spacer, Text } from "@chakra-ui/react";
-import Image from "next/image";
 
 const Cuisine = ({ data }) => {
   return (
@@ -23,8 +23,6 @@ const Cuisine = ({ data }) => {
               placeholder={"blur"}
               blurDataURL={data.image}
               quality={100}
-
-              // fallbackSrc={"/images/placeholder.avif"}
             />
           </Box>
           <Box display={"flex"}>

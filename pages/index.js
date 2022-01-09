@@ -1,12 +1,13 @@
-import { Box } from "@chakra-ui/react";
 import Head from "next/head";
+
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../lib/firebase.config";
+
 import FoodCategory from "../components/FoodCategory";
 import HeroSection from "../components/HeroSection";
 import Layout from "../components/Layout";
 import NavbarHome from "../components/NavbarHome";
-//import { cuisines } from "../data/cuisines";
-import { collection, doc, getDocs, getFirestore } from "firebase/firestore";
-import { db } from "../lib/firebase.config";
+import { Box } from "@chakra-ui/react";
 
 export default function Home({ cuisines }) {
   return (
@@ -41,7 +42,7 @@ export const getStaticProps = async () => {
 
   const cuisinesData = [];
   querysnapshot.forEach((doc) => {
-    cuisinesData.push({ _id: doc.id, ...doc.data() });
+    cuisinesData.push({ ...doc.data() });
   });
   return {
     props: { cuisines: cuisinesData },

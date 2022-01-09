@@ -1,5 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "../components/Layout";
+import MainLayout from "../components/MainLayout";
 import theme from "../components/Theme";
 
 /*
@@ -8,7 +9,8 @@ https://stackoverflow.com/questions/69078144/next-js-context-provider-wrapping-a
 */
 
 function ZhacksFoody({ Component, pageProps }) {
-  const getLayout = Component.getLayout || ((page) => <Layout> {page}</Layout>);
+  const getLayout =
+    Component.getLayout || ((page) => <MainLayout>{page}</MainLayout>);
   return (
     <ChakraProvider theme={theme}>
       {getLayout(<Component {...pageProps} />)}

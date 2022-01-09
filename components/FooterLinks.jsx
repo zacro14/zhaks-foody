@@ -1,12 +1,14 @@
 import { List, ListItem } from "@chakra-ui/react";
 import Link from "next/link";
 
-const FooterLinks = ({ props, params }) => {
+const FooterLinks = ({ props }) => {
   return (
     <>
       <List>
         <ListItem _hover={{ textDecoration: "underline", cursor: "pointer" }}>
-          <Link href={`/${params}`}>{props}</Link>
+          <Link passHref href={`/${props.path}`}>
+            {props.title}
+          </Link>
         </ListItem>
       </List>
     </>

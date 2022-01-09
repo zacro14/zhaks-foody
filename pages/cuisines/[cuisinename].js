@@ -1,63 +1,59 @@
 import Head from "next/head";
-import CuisineType from "../../components/Cuisine";
-import Layout from "../../components/Layout";
-import NavBar from "../../components/NavBar";
-import { Box, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import Link from "next/link";
+
 import { db } from "../../lib/firebase.config";
 import { useRouter } from "next/router";
+import CuisineType from "../../components/Cuisine";
+import { collection, getDocs, query, where } from "firebase/firestore";
+
+import NotFoundRestaurant from "../../components/NotFoundRestaurant";
+import { Box, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
 
 const Cuisine = ({ restaurant }) => {
   const router = useRouter();
-  return (
-    <>
-      <Head>
-        <title> Zhacks Foody | {router.query.cuisinename} </title>
-      </Head>
-      <Box
-        as={"main"}
-        pos={"relative"}
-        zIndex={0}
-        px={{ base: "2", md: "10", lg: "20" }}
-        py={"10"}
-      >
-        <Heading>
-          Choose the best{" "}
-          <Text as={"span"} color={"red.500"} textTransform={"capitalize"}>
-            {router.query.cuisinename}
-          </Text>{" "}
-          Foods
-        </Heading>
-        <Grid
-          templateColumns={{
-            base: "repeat(1, 1fr)",
-            md: "repeat(3, 1fr)",
-            lg: "repeat(4, 1fr)",
-          }}
-          gap={{ base: null, md: "5", lg: "6" }}
-        >
-          {restaurant.map((burger) => (
-            <GridItem
-              _hover={{ shadow: "2xl", rounded: "md" }}
-              p={"2"}
-              key={burger._id}
-            >
-              <CuisineType data={burger} />
-            </GridItem>
-          ))}
-        </Grid>
-      </Box>
-    </>
-  );
-};
 
-Cuisine.getLayout = (page) => {
-  return (
-    <Layout>
-      <NavBar />
-      {page}
-    </Layout>
-  );
+  if (Array.isArray(restaurant) && !restaurant.length) {
+    return <NotFoundRestaurant />;
+  } else {
+    return (
+      <>
+        <Head>
+          <title> Zhacks Foody | {router.query.cuisinename} </title>
+        </Head>
+        <Box
+          as={"main"}
+          pos={"relative"}
+          zIndex={0}
+          px={{ base: "2", md: "10", lg: "20" }}
+          py={"10"}
+        >
+          <Heading>
+            Choose the best{" "}
+            <Text as={"span"} color={"red.500"} textTransform={"capitalize"}>
+              {router.query.cuisinename}
+            </Text>{" "}
+            Foods
+          </Heading>
+          <Grid
+            templateColumns={{
+              base: "repeat(1, 1fr)",
+              md: "repeat(3, 1fr)",
+              lg: "repeat(4, 1fr)",
+            }}
+            gap={{ base: null, md: "5", lg: "6" }}
+          >
+            {restaurant?.map((burger) => (
+              <Link href={"/restaurant"} key={burger._id} passHref>
+                <GridItem _hover={{ shadow: "2xl", rounded: "md" }} p={"2"}>
+                  <CuisineType data={burger} />
+                </GridItem>
+              </Link>
+            ))}
+          </Grid>
+        </Box>
+      </>
+    );
+  }
 };
 
 export const getStaticProps = async (context) => {
@@ -80,6 +76,7 @@ export const getStaticProps = async (context) => {
 
   return {
     props: { restaurant: restaurant },
+    revalidate: 2,
   };
 };
 

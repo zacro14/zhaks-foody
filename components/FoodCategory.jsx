@@ -1,19 +1,11 @@
-import { Box, Grid, Heading, Text } from "@chakra-ui/react";
+import { Box, Grid, Heading, Link, Text } from "@chakra-ui/react";
 import FoodCuisineCollection from "./FoodCuisineCollection";
-import { cuisines } from "../data/cuisines";
+import Nextlink from "next/link";
 
-const FoodCategory = () => {
+const FoodCategory = ({ data }) => {
   return (
     <>
-      <Box
-        // h={{
-        //   base: "auto",
-        //   sm: "auto",
-        //   md: "auto",
-        //   lg: "auto",
-        // }}
-        px={{ base: "2", sm: "5", md: "10", lg: "20" }}
-      >
+      <Box px={{ base: "2", sm: "5", md: "10", lg: "20" }}>
         <Heading mt={"7"} textTransform={"capitalize"}>
           many choices just for{" "}
           <Text as={"span"} color={"red.500"}>
@@ -33,8 +25,20 @@ const FoodCategory = () => {
           columnGap={"5"}
         >
           {" "}
-          {cuisines.map((cuisine) => (
-            <FoodCuisineCollection cuisine={cuisine} key={cuisine._id} />
+          {data.map((cuisine) => (
+            <Nextlink
+              href={{
+                pathname: `/cuisines/${cuisine.slug}`,
+                query: { cuisinename: cuisine.slug },
+              }}
+              key={cuisine.slug}
+              passHref
+              as={`/cuisines/${cuisine.slug}`}
+            >
+              <Link _focus={{ border: "none" }}>
+                <FoodCuisineCollection cuisine={cuisine} />
+              </Link>
+            </Nextlink>
           ))}
         </Grid>
       </Box>

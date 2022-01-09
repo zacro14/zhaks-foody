@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { AiOutlineShopping } from "react-icons/ai";
 import CartDrawer from "./CartDrawer";
+import { AiOutlineShopping } from "react-icons/ai";
 import {
   Badge,
   Box,
@@ -21,7 +21,7 @@ const Navbar = () => {
   const btnCart = useRef();
 
   const scrollBehavior = () => {
-    if (window.scrollY > 70) {
+    if (window.scrollY > 0) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -48,8 +48,8 @@ const Navbar = () => {
         zIndex={1}
         boxShadow={navabar ? "md" : null}
         // transition={"all 0.2s "}
-        transform={navabar ? "translateY(0)" : "translateY(20%)"}
-        transition={"transform 0.2s ease-in 0s"}
+        // transform={navabar ? "translateY(0)" : "translateY(20%)"}
+        transition={" 0.2s ease-in 0s"}
       >
         <Link href={"/"} passHref={true}>
           <Box as={"a"} display={"flex"} alignItems={"center"}>

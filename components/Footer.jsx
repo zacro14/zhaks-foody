@@ -1,5 +1,6 @@
-import { MdOutlineFacebook } from "react-icons/md";
 import FooterLinks from "./FooterLinks";
+import { cuisines, aboutCompany, forYou } from "../data/footerlinks";
+import { MdOutlineFacebook } from "react-icons/md";
 import { AiFillTwitterCircle, AiOutlineWechat } from "react-icons/ai";
 import {
   Box,
@@ -14,7 +15,7 @@ import {
 
 const Footer = () => {
   const year = new Date().getFullYear();
-  console.log(year);
+
   return (
     <>
       <Box
@@ -47,7 +48,6 @@ const Footer = () => {
           gap={{ base: "none", md: "5" }}
           rowGap={"5"}
           mt={"5"}
-          // px={{ base: "2", sm: "10", md: "10", lg: "20" }}
         >
           <GridItem color={"gray.700"}>
             <Box
@@ -59,11 +59,9 @@ const Footer = () => {
               Popular Cuisines
             </Box>
             <Box mt={{ base: "2", sm: "2", md: "5" }}>
-              <FooterLinks props={"Chinese Food"} params={"Cuisine/Chinese"} />
-              <FooterLinks props={"Filipino Food"} />
-              <FooterLinks props={"Japanese Food"} />
-              <FooterLinks props={"Korean Food"} />
-              <FooterLinks props={"Indian Food"} />
+              {cuisines.map((cuisine, index) => (
+                <FooterLinks props={cuisine} key={index} />
+              ))}
             </Box>
           </GridItem>
           <GridItem color={"gray.700"} fontSize={"16px"} fontWeight={"normal"}>
@@ -71,7 +69,7 @@ const Footer = () => {
               <Box
                 display={"flex"}
                 fontWeight={"semibold"}
-                letterSpacing={"widest"}
+                letterSpacing={{ base: "normal", md: "widest" }}
                 textTransform={"uppercase"}
               >
                 About
@@ -95,9 +93,9 @@ const Footer = () => {
               </Box>
             </Box>
             <Box mt={{ base: "2", sm: "2", md: "5" }}>
-              <FooterLinks props={"Who We Are"} />
-              <FooterLinks props={"Careers"} />
-              <FooterLinks props={"Blog"} />
+              {aboutCompany.map((link, index) => (
+                <FooterLinks props={link} key={index} />
+              ))}
             </Box>
           </GridItem>
           <GridItem>
@@ -109,9 +107,9 @@ const Footer = () => {
               For you
             </Box>
             <Box mt={{ base: "2", sm: "2", md: "5" }}>
-              <FooterLinks props={"FAQ"} />
-              <FooterLinks props={"Privacy"} />
-              <FooterLinks props={"Terms"} />
+              {forYou.map((foryou, index) => (
+                <FooterLinks props={foryou} key={index} />
+              ))}
             </Box>
           </GridItem>
           <GridItem>

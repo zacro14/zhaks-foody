@@ -12,7 +12,6 @@ const FoodCuisineCollection = ({ cuisine }) => {
       >
         <Box
           pos={"relative"}
-          w={"100%"}
           h={"36"}
           mb={"3"}
           overflow={"hidden"}
@@ -22,11 +21,11 @@ const FoodCuisineCollection = ({ cuisine }) => {
           <Image
             src={cuisine.image}
             alt={cuisine.title}
-            fallback={" "}
             boxSize={"100%"}
             transition={"all 0.5s ease"}
             objectFit={"cover"}
             align={"center"}
+            fallbackSrc={"/images/placeholder.avif"}
             _hover={{
               transform: "scale(1.1)",
               transition: "all 0.5s ease",
