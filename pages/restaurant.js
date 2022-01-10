@@ -1,11 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
+import NextLink from "next/link";
 import { menuTitle } from "../data/menu";
 import { StarIcon } from "@chakra-ui/icons";
 import {
+  Link,
   Badge,
   Box,
   Center,
+  Container,
   Divider,
   Heading,
   HStack,
@@ -17,6 +20,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import MenuSection from "../components/MenuSection";
 
 const Restaurant = () => {
   return (
@@ -27,8 +31,8 @@ const Restaurant = () => {
       <Box
         as={"main"}
         pb={"5"}
-        bgColor={"white"}
-        h={{ base: "container.sm", md: "container.md", lg: "container.lg" }}
+        bgColor={"gray.50"}
+        minH={{ base: "container.sm", md: "container.md", lg: "container.lg" }}
       >
         <Box as={"section"} h={"xs"} bgColor={"gray.200"} pos={"relative"}>
           <Image
@@ -42,7 +46,7 @@ const Restaurant = () => {
           />
         </Box>
 
-        <Box as={"section"} pb={"5"}>
+        <Box as={"section"} pb={"5"} bgColor={"white"}>
           <Box px={"10"} pt={"3"}>
             <Heading>Jollibee - Monuz</Heading>
           </Box>
@@ -85,9 +89,9 @@ const Restaurant = () => {
           </VStack>
         </Box>
 
-        <Box as={"section"} pt={"2"}>
+        <Box as={"section"}>
           <Tabs align="center" id={"menu"}>
-            <TabList borderBottom={"unset"} shadow={"md"}>
+            <TabList borderBottom={"unset"} shadow={"sm"} bgColor={"white"}>
               {menuTitle.length > 0 &&
                 menuTitle.map((menu, index) => (
                   <Tab
@@ -99,18 +103,31 @@ const Restaurant = () => {
                       color: "red.500",
                       borderColor: "currentColor",
                     }}
+                    panelId="burgers"
                   >
-                    {menu.menu}
+                    <NextLink href={`#menu-category-${menu.id}`} as={null}>
+                      <Link
+                        textDecoration={"none"}
+                        _hover={{ textDecoration: "none" }}
+                        _focus={{ border: "none" }}
+                      >
+                        {menu.menu}
+                      </Link>
+                    </NextLink>
                   </Tab>
                 ))}
             </TabList>
-            <TabPanels>
-              <TabPanel>ok</TabPanel>
-            </TabPanels>
-            <TabPanels>
-              <TabPanel>ok</TabPanel>
-            </TabPanels>
+            <TabPanels></TabPanels>
           </Tabs>
+
+          <Box>
+            <VStack mt={"20"} alignItems={"flex-start"} px={"10"}>
+              {menuTitle.length > 0 &&
+                menuTitle.map((menu) => (
+                  <MenuSection key={menu.id} menu={menu} />
+                ))}
+            </VStack>
+          </Box>
         </Box>
       </Box>
     </>
