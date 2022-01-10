@@ -1,13 +1,13 @@
 import Head from "next/head";
-import Link from "next/link";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
 
 import { db } from "../../lib/firebase.config";
-import { useRouter } from "next/router";
-import CuisineType from "../../components/Cuisine";
+import RestaurantCuisine from "../../components/Cuisine";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
 import NotFoundRestaurant from "../../components/NotFoundRestaurant";
-import { Box, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Heading, Link, Text } from "@chakra-ui/react";
 
 const Cuisine = ({ restaurant }) => {
   const router = useRouter();
@@ -43,11 +43,23 @@ const Cuisine = ({ restaurant }) => {
             gap={{ base: null, md: "5", lg: "6" }}
           >
             {restaurant?.map((burger) => (
-              <Link href={"/restaurant"} key={burger._id} passHref>
-                <GridItem _hover={{ shadow: "2xl", rounded: "md" }} p={"2"}>
-                  <CuisineType data={burger} />
-                </GridItem>
-              </Link>
+              <NextLink href={"/restaurant"} key={burger._id} passHref>
+                <Link
+                  _hover={{ textTransform: "none" }}
+                  _focus={{ border: "none" }}
+                >
+                  <GridItem
+                    _hover={{
+                      shadow: "2xl",
+                      rounded: "md",
+                    }}
+                    p={"2"}
+                    transition={"all 0.2s ease-in-out"}
+                  >
+                    <RestaurantCuisine data={burger} />
+                  </GridItem>
+                </Link>
+              </NextLink>
             ))}
           </Grid>
         </Box>
