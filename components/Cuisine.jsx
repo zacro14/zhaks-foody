@@ -31,6 +31,7 @@ const Cuisine = ({ data }) => {
               isTruncated
               fontSize={16}
               w={"max-content"}
+              _hover={{ textDecoration: "underline" }}
             >
               {data.name + " "}-{" " + data.branch}
             </Heading>
