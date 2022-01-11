@@ -20,7 +20,7 @@ const NavBar = () => {
   const btnCart = useRef();
   const [navbar, setNavbar] = useState(false);
   const scrollBehavior = () => {
-    if (window.scrollY > -0) {
+    if (window.scrollY > 0) {
       setNavbar(true);
     } else {
       setNavbar(false);
@@ -42,11 +42,11 @@ const NavBar = () => {
         px={{ base: "2", sm: "5", md: "10", lg: "20" }}
         py={"5"}
         background={"white"}
-        position={navbar ? "fixed" : "relative"}
+        position={navbar ? "sticky" : "relative"}
         top={navbar ? 0 : null}
         w={"full"}
         zIndex={99}
-        boxShadow={navbar ? "md" : "none"}
+        // boxShadow={navbar ? "md" : "none"}
         transition={"all 0.2s "}
       >
         <Link href={"/"} passHref={true}>
