@@ -1,4 +1,4 @@
-import { Box, Container, Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 
 const MenuSection = ({ menu }) => {
   return (
@@ -8,8 +8,14 @@ const MenuSection = ({ menu }) => {
         key={menu.id}
         as={"section"}
         height={"xs"}
+        bgColor={"white"}
+        w={"full"}
+        px={"10"}
+        py={"5"}
       >
-        <Heading mt={"24"}>{menu.menu}</Heading>
+        <Heading fontSize={"2xl"} fontWeight={"semibold"}>
+          {menu.menu}
+        </Heading>
       </Box>
     </>
   );
