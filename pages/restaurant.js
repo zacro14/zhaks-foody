@@ -31,10 +31,10 @@ const Restaurant = () => {
       <Box
         as={"main"}
         pb={"5"}
-        bgColor={"gray.50"}
+        bgColor={"gray.100"}
         minH={{ base: "container.sm", md: "container.md", lg: "container.lg" }}
       >
-        <Box as={"section"} h={"xs"} bgColor={"gray.200"} pos={"relative"}>
+        <Box as={"section"} h={"60"} bgColor={"gray.200"} pos={"relative"}>
           <Image
             src={"/images/restaurant.jpg"}
             placeholder={"blur"}
@@ -90,22 +90,24 @@ const Restaurant = () => {
         </Box>
 
         <Box as={"section"}>
-          <Tabs align="center" id={"menu"}>
-            <TabList borderBottom={"unset"} shadow={"sm"} bgColor={"white"}>
+          <Tabs align="center" id={"menu"} position={"sticky"} top={"20"}>
+            <TabList borderBottom={"unset"} shadow={"md"} bgColor={"white"}>
               {menuTitle.length > 0 &&
                 menuTitle.map((menu, index) => (
                   <Tab
+                    p={"5"}
+                    color={"gray.700"}
                     key={index}
                     _focus={{ outline: "none" }}
-                    fontWeight={"bold"}
+                    fontWeight={"semibold"}
                     _hover={{ color: "red.500" }}
                     _selected={{
                       color: "red.500",
                       borderColor: "currentColor",
+                      fontWeight: "bold",
                     }}
-                    panelId="burgers"
                   >
-                    <NextLink href={`#menu-category-${menu.id}`} as={null}>
+                    <NextLink href={`#menu-category-${menu.id}`}>
                       <Link
                         textDecoration={"none"}
                         _hover={{ textDecoration: "none" }}
@@ -121,7 +123,11 @@ const Restaurant = () => {
           </Tabs>
 
           <Box>
-            <VStack mt={"20"} alignItems={"flex-start"} px={"10"}>
+            <VStack
+              mt={"20"}
+              alignItems={"flex-start"}
+              justifyContent={"start"}
+            >
               {menuTitle.length > 0 &&
                 menuTitle.map((menu) => (
                   <MenuSection key={menu.id} menu={menu} />
