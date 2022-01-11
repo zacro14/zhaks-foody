@@ -42,6 +42,9 @@ export const theme = extendTheme({
       ":host,:root": {
         "--chakra-ui-focus-ring-color": "#E53E3E",
       },
+      html: {
+        scrollBehavior: "smooth",
+      },
     },
   },
   shadows: {
