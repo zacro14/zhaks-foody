@@ -54,7 +54,7 @@ const Cuisine = ({ restaurant }) => {
                       rounded: "md",
                     }}
                     p={"2"}
-                    transition={"all 0.2s ease-in-out"}
+                    transition={"all 0.5s ease-out"}
                   >
                     <RestaurantCuisine data={burger} />
                   </GridItem>
