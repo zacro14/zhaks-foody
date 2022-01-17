@@ -42,7 +42,7 @@ const NavBar = () => {
         px={{ base: "2", sm: "5", md: "10", lg: "20" }}
         py={"5"}
         background={"white"}
-        position={navbar ? "sticky" : "relative"}
+        position={navbar ? "fixed" : "relative"}
         top={navbar ? 0 : null}
         w={"full"}
         zIndex={99}
