@@ -5,7 +5,7 @@ import Nextlink from "next/link";
 const FoodCategory = ({ data }) => {
   return (
     <>
-      <Box px={{ base: "2", sm: "5", md: "10", lg: "20" }}>
+      <Box px={{ base: "2", sm: "5", md: "10", lg: "10" }}>
         <Heading mt={"7"} textTransform={"capitalize"}>
           many choices just for{" "}
           <Text as={"span"} color={"red.500"}>
