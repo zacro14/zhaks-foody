@@ -60,8 +60,9 @@ const Restaurant = () => {
             align={"flex-start"}
             px={{ base: "5", md: "10", lg: "10" }}
             pt={"2"}
+            justifyContent={"center"}
           >
-            <HStack h={"5"}>
+            <HStack h={"5"} spacing={"2"}>
               <Text
                 as={"span"}
                 textTransform={"capitalize"}
@@ -72,19 +73,19 @@ const Restaurant = () => {
               >
                 burger, american
               </Text>
-              <Divider orientation="vertical" />
-              <Center>
+              <Box color={"gray.500"}>&bull;</Box>
+              <Box>
                 <Badge
                   bgColor={"white"}
                   display={"flex"}
                   alignItems={"center"}
                   fontWeight={"normal"}
-                  p={"1"}
+                  paddingInline={"unset"}
                 >
                   <StarIcon
                     role={"rating"}
                     boxSize={"3"}
-                    color={"yellow.500"}
+                    color={"yellow.400"}
                   />
                   <Text as={"span"} fontSize={"xs"} pl={"1"}>
                     <Text as={"strong"} fontWeight={"bold"}>
@@ -93,7 +94,7 @@ const Restaurant = () => {
                     /5
                   </Text>
                 </Badge>
-              </Center>
+              </Box>
             </HStack>
           </VStack>
         </Box>
