@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import NextLink from "next/link";
+import MenuSection from "../components/MenuSection";
 import { menuTitle } from "../data/menu";
 import { StarIcon } from "@chakra-ui/icons";
 import {
@@ -20,7 +21,6 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import MenuSection from "../components/MenuSection";
 
 const Restaurant = () => {
   return (
@@ -31,10 +31,15 @@ const Restaurant = () => {
       <Box
         as={"main"}
         pb={"5"}
-        bgColor={"gray.100"}
-        minH={{ base: "container.sm", md: "container.md", lg: "container.lg" }}
+        bgColor={"#F7F7F7"}
+        minH={{ base: "container.sm", md: "container.md", lg: "container.md" }}
       >
-        <Box as={"section"} h={"60"} bgColor={"gray.200"} pos={"relative"}>
+        <Box
+          as={"section"}
+          h={{ base: "48", md: "60", lg: "60" }}
+          bgColor={"gray.200"}
+          pos={"relative"}
+        >
           <Image
             src={"/images/restaurant.jpg"}
             placeholder={"blur"}
@@ -47,11 +52,15 @@ const Restaurant = () => {
         </Box>
 
         <Box as={"section"} pb={"5"} bgColor={"white"}>
-          <Box px={"10"} pt={"3"}>
+          <Box px={{ base: "5", md: "10", lg: "10" }} pt={"3"}>
             <Heading>Jollibee - Monuz</Heading>
           </Box>
 
-          <VStack align={"flex-start"} px={"10"} pt={"2"}>
+          <VStack
+            align={"flex-start"}
+            px={{ base: "5", md: "10", lg: "10" }}
+            pt={"2"}
+          >
             <HStack h={"5"}>
               <Text
                 as={"span"}
@@ -89,51 +98,50 @@ const Restaurant = () => {
           </VStack>
         </Box>
 
-        <Box as={"section"}>
-          <Tabs align="center" id={"menu"} position={"sticky"} top={"20"}>
-            <TabList borderBottom={"unset"} shadow={"md"} bgColor={"white"}>
+        <Box as={"section"} minH={"container.md"}>
+          <Tabs align="center" id={"menu"}>
+            <TabList
+              borderBottom={"none"}
+              shadow={"md"}
+              bgColor={"white"}
+              position={"sticky"}
+              top={"20"}
+              zIndex={"sticky"}
+              overflowX={{ base: "auto", md: "auto", lg: "auto" }}
+              overflowY={"hidden"}
+            >
               {menuTitle.length > 0 &&
                 menuTitle.map((menu, index) => (
                   <Tab
+                    key={menu.id}
                     p={"5"}
                     color={"gray.700"}
-                    key={index}
                     _focus={{ outline: "none" }}
-                    fontWeight={"semibold"}
+                    fontWeight={"normal"}
                     _hover={{ color: "red.500" }}
                     _selected={{
                       color: "red.500",
                       borderColor: "currentColor",
-                      fontWeight: "bold",
+                      fontWeight: "semibold",
                     }}
                   >
-                    <NextLink href={`#menu-category-${menu.id}`}>
-                      <Link
-                        textDecoration={"none"}
-                        _hover={{ textDecoration: "none" }}
-                        _focus={{ border: "none" }}
-                      >
-                        {menu.menu}
-                      </Link>
-                    </NextLink>
+                    {menu.menu}
                   </Tab>
                 ))}
             </TabList>
-            <TabPanels></TabPanels>
-          </Tabs>
-
-          <Box>
-            <VStack
-              mt={"20"}
-              alignItems={"flex-start"}
-              justifyContent={"start"}
-            >
+            <TabPanels>
               {menuTitle.length > 0 &&
                 menuTitle.map((menu) => (
-                  <MenuSection key={menu.id} menu={menu} />
+                  <TabPanel key={menu.id} p={"unset"}>
+                    <Box>
+                      <VStack>
+                        <MenuSection menu={menu} />
+                      </VStack>
+                    </Box>
+                  </TabPanel>
                 ))}
-            </VStack>
-          </Box>
+            </TabPanels>
+          </Tabs>
         </Box>
       </Box>
     </>
