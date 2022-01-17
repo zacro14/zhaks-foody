@@ -29,6 +29,7 @@ const MenuItem = ({ menu }) => {
               borderRadius={"md"}
               width={"48"}
               height={"32"}
+              fallbackSrc={"/images/placeholder.avif"}
             />
           </Box>
           <Box
