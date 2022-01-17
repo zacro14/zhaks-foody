@@ -24,7 +24,7 @@ const Cuisine = ({ restaurant }) => {
           as={"main"}
           pos={"relative"}
           zIndex={0}
-          px={{ base: "2", md: "10", lg: "20" }}
+          px={{ base: "2", md: "10", lg: "10" }}
           py={"10"}
         >
           <Heading>
