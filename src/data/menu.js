@@ -65,3 +65,11 @@ export const menu = [
     image: "/images/korean-food.jpg",
   },
 ];
+
+export const macdought = {
+  id: 1,
+  name: "macdought",
+  rating: 4.5,
+  branch: "Baharuth Empire",
+  tags: ["burger", "fast-food"],
+};
