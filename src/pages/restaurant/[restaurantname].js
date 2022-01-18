@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import MenuSection from "../../components/MenuSection";
-import { menuTitle, restaurant } from "../../data/menu";
+import { menuTitle, macdought } from "../../data/menu";
 import { StarIcon } from "@chakra-ui/icons";
 import {
   Badge,
@@ -21,7 +21,10 @@ const Restaurant = () => {
   return (
     <>
       <Head>
-        <title> Zhacks Foody | Restaurant</title>
+        <title>
+          Zhacks Foody | Restaurant -{" "}
+          {macdought.name[0].toUpperCase() + macdought.name.substring(1)}
+        </title>
       </Head>
       <Box
         as={"main"}
@@ -48,8 +51,8 @@ const Restaurant = () => {
 
         <Box as={"section"} pb={"5"} bgColor={"white"}>
           <Box px={{ base: "5", md: "10", lg: "10" }} pt={"3"}>
-            <Heading>
-              {restaurant.name} - {restaurant.branch}
+            <Heading textTransform={"capitalize"} isTruncated>
+              {macdought.name} - {macdought.branch}
             </Heading>
           </Box>
 
