@@ -71,5 +71,6 @@ export const macdought = {
   name: "macdought",
   rating: 4.5,
   branch: "Baharuth Empire",
-  tags: ["burger", "fast-food"],
+  tags: ["burger", "fast-food", "international"],
+  heroimage: "/images/burgers/hero-image.jpg",
 };
