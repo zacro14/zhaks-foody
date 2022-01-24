@@ -39,7 +39,7 @@ const NavbarHome = () => {
     <>
       <Flex
         as={"nav"}
-        px={{ base: "2", sm: "5", md: "10", lg: "20" }}
+        px={{ base: "2", sm: "5", md: "10", lg: "10" }}
         py={"5"}
         background={navabar ? "white" : "transparent"}
         position={navabar ? "fixed" : "absolute"}
@@ -94,7 +94,7 @@ const NavbarHome = () => {
         </Box>
         <Box display={"flex"} p={"1"} alignItems={"center"}>
           <Button variant={"outline"} bgColor={"white"}>
-            Login
+            <Link href={"/login"}>Login</Link>
           </Button>
         </Box>
       </Flex>

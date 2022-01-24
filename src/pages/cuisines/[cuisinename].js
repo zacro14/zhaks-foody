@@ -18,13 +18,17 @@ const Cuisine = ({ restaurant }) => {
     return (
       <>
         <Head>
-          <title> Zhacks Foody | {router.query.cuisinename} </title>
+          <title>
+            Zhacks Foody |
+            {router.query.cuisinename[0].toUpperCase() +
+              router.query.cuisinename.substring(1)}
+          </title>
         </Head>
         <Box
           as={"main"}
           pos={"relative"}
           zIndex={0}
-          px={{ base: "2", md: "10", lg: "20" }}
+          px={{ base: "2", md: "10", lg: "10" }}
           py={"10"}
         >
           <Heading>
@@ -42,8 +46,12 @@ const Cuisine = ({ restaurant }) => {
             }}
             gap={{ base: null, md: "5", lg: "6" }}
           >
-            {restaurant?.map((burger) => (
-              <NextLink href={"/restaurant"} key={burger._id} passHref>
+            {restaurant?.map((restaurant) => (
+              <NextLink
+                href={`/restaurant/${restaurant.name.toLowerCase()}`}
+                key={restaurant._id}
+                passHref
+              >
                 <Link
                   _hover={{ textTransform: "none" }}
                   _focus={{ border: "none" }}
@@ -56,7 +64,7 @@ const Cuisine = ({ restaurant }) => {
                     p={"2"}
                     transition={"all 0.5s ease-out"}
                   >
-                    <RestaurantCuisine data={burger} />
+                    <RestaurantCuisine data={restaurant} />
                   </GridItem>
                 </Link>
               </NextLink>

@@ -19,6 +19,7 @@ const MenuItem = ({ menu }) => {
         rounded={"md"}
         _hover={{ boxShadow: "lg", cursor: "pointer" }}
         bgColor={"white"}
+        transition={"0.3s ease-in-out 0s"}
       >
         <Flex p={"3"}>
           <Box pos={"relative"} mr={"5"}>

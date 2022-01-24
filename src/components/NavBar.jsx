@@ -39,14 +39,14 @@ const NavBar = () => {
     <>
       <Flex
         as={"nav"}
-        px={{ base: "2", sm: "5", md: "10", lg: "20" }}
+        px={{ base: "2", sm: "5", md: "10", lg: "10" }}
         py={"5"}
         background={"white"}
         position={navbar ? "fixed" : "relative"}
         top={navbar ? 0 : null}
         w={"full"}
         zIndex={99}
-        // boxShadow={navbar ? "md" : "none"}
+        boxShadow={navbar ? "md" : "none"}
         transition={"all 0.2s "}
       >
         <Link href={"/"} passHref={true}>
@@ -92,7 +92,7 @@ const NavBar = () => {
         </Box>
         <Box display={"flex"} p={"1"} alignItems={"center"}>
           <Button variant={"outline"} bgColor={"white"}>
-            Login
+            <Link href={"/login"}>Login</Link>
           </Button>
         </Box>
       </Flex>

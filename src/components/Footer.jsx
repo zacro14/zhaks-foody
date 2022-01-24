@@ -22,7 +22,7 @@ const Footer = () => {
         bgColor={"gray.100"}
         as="footer"
         h={"auto"}
-        px={{ base: "2", sm: "5", md: "10", lg: "20" }}
+        px={{ base: "2", sm: "5", md: "10", lg: "10" }}
       >
         <Box display={"flex"} alignItems={"center"}>
           <Box

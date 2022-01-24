@@ -33,32 +33,6 @@ const FoodCuisineCollection = ({ cuisine }) => {
             }}
           />
         </Box>
-        {cuisine.hasBadge ? (
-          <Box>
-            <Badge
-              borderRadius={"unset"}
-              roundedRight={"sm"}
-              colorScheme={"red"}
-              variant={"solid"}
-              textTransform={"capitalize"}
-              p={"1"}
-              pos={"absolute"}
-              left={"-2"}
-              top={"3"}
-              boxShadow={"xl"}
-            >
-              {cuisine.tag}
-            </Badge>
-            <Box
-              pos={"absolute"}
-              borderTop={"8px solid #C53030"}
-              borderLeft={"8px solid transparent"}
-              top={"38px"}
-              left={"-8px"}
-              rounded={"unset"}
-            />
-          </Box>
-        ) : null}
         <Box as={"p"} fontWeight={"bold"} textTransform={"capitalize"}>
           {cuisine.title}
         </Box>
