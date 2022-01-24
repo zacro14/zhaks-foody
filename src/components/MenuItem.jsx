@@ -1,12 +1,10 @@
 import { AddIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
   Center,
   Flex,
   GridItem,
   Heading,
-  Icon,
   Image,
   Spacer,
   Text,
