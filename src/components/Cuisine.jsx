@@ -5,11 +5,7 @@ import { Badge, Box, Flex, Heading, Spacer, Text } from "@chakra-ui/react";
 const Cuisine = ({ data }) => {
   return (
     <>
-      <Box
-        my={{ base: null, md: "5", lg: "5" }}
-        _hover={{ cursor: "pointer" }}
-        pos={"relative"}
-      >
+      <Box _hover={{ cursor: "pointer" }} pos={"relative"}>
         <Flex flexDirection={"column"}>
           <Box
             bgColor={"gray.100"}
