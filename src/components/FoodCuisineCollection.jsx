@@ -3,13 +3,7 @@ import { Badge, Box, GridItem, Image } from "@chakra-ui/react";
 const FoodCuisineCollection = ({ cuisine }) => {
   return (
     <>
-      <GridItem
-        pos={"relative"}
-        h={"100%"}
-        mt={"2.5"}
-        mb={"8"}
-        cursor={"pointer"}
-      >
+      <GridItem pos={"relative"} h={"100%"} mt={"2.5"} cursor={"pointer"}>
         <Box
           pos={"relative"}
           h={"36"}

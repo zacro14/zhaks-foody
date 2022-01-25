@@ -16,14 +16,17 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { db } from "../../lib/firebase.config";
 
-const Restaurant = () => {
+const Restaurant = ({ restaurant }) => {
+  console.log(restaurant);
   return (
     <>
       <Head>
         <title>
           Zhacks Foody | Restaurant -{" "}
-          {macdought.name[0].toUpperCase() + macdought.name.substring(1)}
+          {restaurant.name.charAt(0).toUpperCase() + restaurant.name.slice(1)}
         </title>
       </Head>
       <Box
@@ -39,10 +42,11 @@ const Restaurant = () => {
           pos={"relative"}
         >
           <Image
-            src={"/images/restaurant.jpg"}
+            src={restaurant.heroimageURL}
             placeholder={"blur"}
-            blurDataURL={"/images/restaurant.jpg"}
+            blurDataURL={restaurant.heroimageURL}
             priority
+            quality={100}
             alt="hero-banner"
             layout={"fill"}
             objectFit={"cover"}
@@ -52,7 +56,7 @@ const Restaurant = () => {
         <Box as={"section"} pb={"5"} bgColor={"white"}>
           <Box px={{ base: "5", md: "10", lg: "10" }} pt={"3"}>
             <Heading textTransform={"capitalize"} isTruncated>
-              {macdought.name} - {macdought.branch}
+              {restaurant.name} - {restaurant.branch}
             </Heading>
           </Box>
 
@@ -67,11 +71,10 @@ const Restaurant = () => {
                 as={"span"}
                 textTransform={"capitalize"}
                 fontWeight={"normal"}
-                fontSize={"small"}
                 color={"gray.600"}
                 isTruncated
               >
-                burger, american
+                {restaurant.tags.join(", ")}
               </Text>
               <Box color={"gray.500"}>&bull;</Box>
               <Box>
@@ -89,7 +92,7 @@ const Restaurant = () => {
                   />
                   <Text as={"span"} fontSize={"xs"} pl={"1"}>
                     <Text as={"strong"} fontWeight={"bold"}>
-                      4.6
+                      {restaurant.rating}
                     </Text>
                     /5
                   </Text>
@@ -112,7 +115,7 @@ const Restaurant = () => {
               overflowY={"hidden"}
             >
               {menuTitle.length > 0 &&
-                menuTitle.map((menu, index) => (
+                menuTitle.map((menu) => (
                   <Tab
                     key={menu.id}
                     p={"5"}
@@ -147,6 +150,39 @@ const Restaurant = () => {
       </Box>
     </>
   );
+};
+
+export const getStaticProps = async (context) => {
+  const docRef = doc(db, "restaurants", context.params.restaurant);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+    const restaurant = { ...docSnap.data() };
+    return {
+      props: { restaurant: restaurant },
+    };
+  } else {
+    console.log("No such document!");
+  }
+};
+
+export const getStaticPaths = async () => {
+  const querysnapshot = await getDocs(collection(db, "restaurants"));
+
+  const getRestaurantData = [];
+  querysnapshot.forEach((doc) => {
+    getRestaurantData.push({ _id: doc.id, ...doc.data() });
+  });
+
+  const paths = getRestaurantData.map((restaurant) => ({
+    params: { restaurant: restaurant._id },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
 };
 
 export default Restaurant;
