@@ -20,6 +20,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import NotFoundRestaurant from "../../components/NotFoundRestaurant";
 
 const Restaurant = ({ restaurant, menu }) => {
   return (
@@ -102,51 +103,55 @@ const Restaurant = ({ restaurant, menu }) => {
           </VStack>
         </Box>
 
-        <Box as={"section"}>
-          <Tabs align="center" id={"menu"}>
-            <TabList
-              borderBottom={"none"}
-              shadow={"md"}
-              bgColor={"white"}
-              position={"sticky"}
-              top={"20"}
-              zIndex={"sticky"}
-              overflowX={{ base: "auto", md: "auto", lg: "auto" }}
-              overflowY={"hidden"}
-            >
-              {menu.length > 0 &&
-                menu.map((menu) => (
-                  <Tab
-                    textTransform={"capitalize"}
-                    key={menu._id}
-                    p={"5"}
-                    color={"gray.700"}
-                    _focus={{ outline: "none" }}
-                    fontWeight={"normal"}
-                    _hover={{ color: "red.500" }}
-                    _selected={{
-                      color: "red.500",
-                      borderColor: "currentColor",
-                      fontWeight: "semibold",
-                    }}
-                  >
-                    {menu.name}
-                  </Tab>
+        {menu.length > 0 ? (
+          <Box as={"section"}>
+            <Tabs align="center" id={"menu"}>
+              <TabList
+                borderBottom={"none"}
+                shadow={"md"}
+                bgColor={"white"}
+                position={"sticky"}
+                top={"20"}
+                zIndex={"sticky"}
+                overflowX={{ base: "auto", md: "auto", lg: "auto" }}
+                overflowY={"hidden"}
+              >
+                {menu.length > 0 &&
+                  menu.map((menu) => (
+                    <Tab
+                      textTransform={"capitalize"}
+                      key={menu._id}
+                      p={"5"}
+                      color={"gray.700"}
+                      _focus={{ outline: "none" }}
+                      fontWeight={"normal"}
+                      _hover={{ color: "red.500" }}
+                      _selected={{
+                        color: "red.500",
+                        borderColor: "currentColor",
+                        fontWeight: "semibold",
+                      }}
+                    >
+                      {menu.name}
+                    </Tab>
+                  ))}
+              </TabList>
+              <TabPanels>
+                {menu?.map((menu) => (
+                  <TabPanel key={menu._id} p={"unset"}>
+                    <Box>
+                      <VStack>
+                        <MenuSection menu={menu} />
+                      </VStack>
+                    </Box>
+                  </TabPanel>
                 ))}
-            </TabList>
-            <TabPanels>
-              {menu?.map((menu) => (
-                <TabPanel key={menu._id} p={"unset"}>
-                  <Box>
-                    <VStack>
-                      <MenuSection menu={menu} />
-                    </VStack>
-                  </Box>
-                </TabPanel>
-              ))}
-            </TabPanels>
-          </Tabs>
-        </Box>
+              </TabPanels>
+            </Tabs>
+          </Box>
+        ) : (
+          <NotFoundRestaurant props={"auto"} />
+        )}
       </Box>
     </>
   );
