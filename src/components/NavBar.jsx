@@ -42,8 +42,8 @@ const NavBar = () => {
         px={{ base: "2", sm: "5", md: "10", lg: "10" }}
         py={"5"}
         background={"white"}
-        position={navbar ? "fixed" : "relative"}
-        top={navbar ? 0 : null}
+        top={0}
+        pos={"sticky"}
         w={"full"}
         zIndex={99}
         boxShadow={navbar ? "md" : "none"}
