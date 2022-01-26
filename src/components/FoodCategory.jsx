@@ -15,6 +15,7 @@ const FoodCategory = ({ data }) => {
         </Heading>
 
         <Grid
+          py="6"
           templateColumns={{
             base: "repeat(2, 1fr)",
             sm: "repeat(2, 1fr)",
