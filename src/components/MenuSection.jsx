@@ -13,12 +13,13 @@ const MenuSection = ({ menu }) => {
         py={{ base: "8", md: "10", lg: "20" }}
       >
         <Heading
+          textTransform={"capitalize"}
           textAlign={"left"}
           fontSize={"2xl"}
           fontWeight={"bold"}
           mb={{ base: "5", md: "10", lg: "10" }}
         >
-          {menu.menu}
+          {menu.name}
         </Heading>
 
         <Grid
