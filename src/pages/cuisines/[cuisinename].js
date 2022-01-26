@@ -41,7 +41,7 @@ const Cuisine = ({ restaurant }) => {
           <Grid
             templateColumns={{
               base: "repeat(1, 1fr)",
-              md: "repeat(3, 1fr)",
+              md: "repeat(2, 1fr)",
               lg: "repeat(4, 1fr)",
             }}
             gap={{ base: null, md: "5", lg: "6" }}
