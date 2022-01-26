@@ -10,7 +10,6 @@ import NotFoundRestaurant from "../../components/NotFoundRestaurant";
 import { Box, Grid, GridItem, Heading, Link, Text } from "@chakra-ui/react";
 
 const Cuisine = ({ restaurant }) => {
-  console.log(restaurant);
   const router = useRouter();
 
   if (Array.isArray(restaurant) && !restaurant.length) {
@@ -50,10 +49,9 @@ const Cuisine = ({ restaurant }) => {
             {restaurant?.map((restaurant) => (
               <NextLink
                 href={{
-                  pathname: `/restaurant/${restaurant._id}`,
-                  query: { _id: `${restaurant._id}` },
+                  pathname: `/restaurant/${restaurant.name}`,
                 }}
-                // as={`/restaurant/${restaurant.name.toLowerCase()}`}
+                as={`/restaurant/${restaurant._id}`}
                 key={restaurant._id}
                 passHref
               >
@@ -101,7 +99,6 @@ export const getStaticProps = async (context) => {
 
   return {
     props: { restaurant: restaurant },
-    revalidate: 2,
   };
 };
 

@@ -22,7 +22,7 @@ const MenuItem = ({ menu }) => {
         <Flex p={"3"}>
           <Box pos={"relative"} mr={"5"}>
             <Image
-              src={menu.image}
+              src={menu.imageUrl}
               alt={menu.name}
               objectFit={"cover"}
               borderRadius={"md"}
