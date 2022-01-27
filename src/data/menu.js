@@ -2,11 +2,39 @@ export const menuTitle = [
   {
     id: 1,
     menu: "Burgers",
+    menuItem: [
+      {
+        id: 1,
+        name: "Pork BBQ Buddy Size",
+        desc: "4 sticks Pork BBQ",
+        image: "/images/chicken-food.jpg",
+      },
+      {
+        id: 2,
+        name: "2 Sticks Pork BBQ (Solo)",
+        desc: "2 sticks Pork BBQ with peanut sauce and 1 java rice",
+        image: "/images/chinese-food.jpg",
+      },
+    ],
   },
   {
     id: 2,
 
     menu: "Chicken",
+    menuItem: [
+      {
+        id: 3,
+        name: "Mang Inasal - Edsa Central : 1 Stick Pork BBQ (Value Meal)",
+        desc: "1 stick Pork BBQ with peanut sauce and 1 java rice and drink",
+        image: "/images/filipino-food.jpeg",
+      },
+      {
+        id: 4,
+        name: "Chicken Inasal Regular (Value Meal)",
+        desc: "Chicken Inasal Regular with 1 rice and drink, choice of chicken part is subject to availbaility",
+        image: "/images/korean-food.jpg",
+      },
+    ],
   },
   { id: 3, menu: "Spagheti" },
   {

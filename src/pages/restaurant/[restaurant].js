@@ -1,8 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
 import MenuSection from "../../components/MenuSection";
-import { menuTitle, macdought } from "../../data/menu";
+import { menuTitle } from "../../data/menu";
 import { StarIcon } from "@chakra-ui/icons";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { db } from "../../lib/firebase.config";
+import placeholder from "../../data/static/placeholder.avif";
+
 import {
   Badge,
   Box,
@@ -16,11 +20,9 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import { db } from "../../lib/firebase.config";
+import NotFoundRestaurant from "../../components/NotFoundRestaurant";
 
-const Restaurant = ({ restaurant }) => {
-  console.log(restaurant);
+const Restaurant = ({ restaurant, menu }) => {
   return (
     <>
       <Head>
@@ -42,11 +44,10 @@ const Restaurant = ({ restaurant }) => {
           pos={"relative"}
         >
           <Image
-            src={restaurant.heroimageURL}
+            src={restaurant?.heroimageURL || placeholder}
             placeholder={"blur"}
-            blurDataURL={restaurant.heroimageURL}
+            blurDataURL={restaurant?.heroimageURL || placeholder}
             priority
-            quality={100}
             alt="hero-banner"
             layout={"fill"}
             objectFit={"cover"}
@@ -102,41 +103,42 @@ const Restaurant = ({ restaurant }) => {
           </VStack>
         </Box>
 
-        <Box as={"section"} minH={"container.md"}>
-          <Tabs align="center" id={"menu"}>
-            <TabList
-              borderBottom={"none"}
-              shadow={"md"}
-              bgColor={"white"}
-              position={"sticky"}
-              top={"20"}
-              zIndex={"sticky"}
-              overflowX={{ base: "auto", md: "auto", lg: "auto" }}
-              overflowY={"hidden"}
-            >
-              {menuTitle.length > 0 &&
-                menuTitle.map((menu) => (
-                  <Tab
-                    key={menu.id}
-                    p={"5"}
-                    color={"gray.700"}
-                    _focus={{ outline: "none" }}
-                    fontWeight={"normal"}
-                    _hover={{ color: "red.500" }}
-                    _selected={{
-                      color: "red.500",
-                      borderColor: "currentColor",
-                      fontWeight: "semibold",
-                    }}
-                  >
-                    {menu.menu}
-                  </Tab>
-                ))}
-            </TabList>
-            <TabPanels>
-              {menuTitle.length > 0 &&
-                menuTitle.map((menu) => (
-                  <TabPanel key={menu.id} p={"unset"}>
+        {menu.length > 0 ? (
+          <Box as={"section"}>
+            <Tabs align="center" id={"menu"}>
+              <TabList
+                borderBottom={"none"}
+                shadow={"md"}
+                bgColor={"white"}
+                position={"sticky"}
+                top={"20"}
+                zIndex={"sticky"}
+                overflowX={{ base: "auto", md: "auto", lg: "auto" }}
+                overflowY={"hidden"}
+              >
+                {menu.length > 0 &&
+                  menu.map((menu) => (
+                    <Tab
+                      textTransform={"capitalize"}
+                      key={menu._id}
+                      p={"5"}
+                      color={"gray.700"}
+                      _focus={{ outline: "none" }}
+                      fontWeight={"normal"}
+                      _hover={{ color: "red.500" }}
+                      _selected={{
+                        color: "red.500",
+                        borderColor: "currentColor",
+                        fontWeight: "semibold",
+                      }}
+                    >
+                      {menu.name}
+                    </Tab>
+                  ))}
+              </TabList>
+              <TabPanels>
+                {menu?.map((menu) => (
+                  <TabPanel key={menu._id} p={"unset"}>
                     <Box>
                       <VStack>
                         <MenuSection menu={menu} />
@@ -144,23 +146,40 @@ const Restaurant = ({ restaurant }) => {
                     </Box>
                   </TabPanel>
                 ))}
-            </TabPanels>
-          </Tabs>
-        </Box>
+              </TabPanels>
+            </Tabs>
+          </Box>
+        ) : (
+          <NotFoundRestaurant props={"auto"} />
+        )}
       </Box>
     </>
   );
 };
 
-export const getStaticProps = async (context) => {
-  const docRef = doc(db, "restaurants", context.params.restaurant);
-  const docSnap = await getDoc(docRef);
+export const getStaticProps = async ({ params }) => {
+  //fetch restaurant
+  const restaurantRef = doc(db, "restaurants", params.restaurant);
+  const docSnap = await getDoc(restaurantRef);
 
-  if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
+  //fetch menus
+  const restmenuRef = collection(
+    db,
+    `/restaurants/${params.restaurant}/category`
+  );
+
+  const restmenuSnap = await getDocs(restmenuRef);
+
+  if (docSnap.exists() || restmenuSnap.exists()) {
     const restaurant = { ...docSnap.data() };
+
+    const getMenu = [];
+    restmenuSnap.forEach((doc) => {
+      getMenu.push({ _id: doc.id, ...doc.data() });
+    });
+
     return {
-      props: { restaurant: restaurant },
+      props: { restaurant: restaurant, menu: getMenu },
     };
   } else {
     console.log("No such document!");

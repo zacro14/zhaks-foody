@@ -6,20 +6,20 @@ const MenuSection = ({ menu }) => {
   return (
     <>
       <Box
-        id={`menu-category-${menu.id}`}
         as={"section"}
-        minH={"xs"}
+        height={"full"}
         w={"full"}
         px={{ base: "5", md: "10", lg: "10" }}
         py={{ base: "8", md: "10", lg: "20" }}
       >
         <Heading
+          textTransform={"capitalize"}
           textAlign={"left"}
           fontSize={"2xl"}
           fontWeight={"bold"}
           mb={{ base: "5", md: "10", lg: "10" }}
         >
-          {menu.menu}
+          {menu.name}
         </Heading>
 
         <Grid
@@ -31,8 +31,8 @@ const MenuSection = ({ menu }) => {
           gap={"3"}
           rounded={"sm"}
         >
-          {cuisineMenu.map((menu) => (
-            <MenuItem key={menu.id} menu={menu} />
+          {menu.menuItem?.map((menu) => (
+            <MenuItem key={menu.name} menu={menu} />
           ))}
         </Grid>
       </Box>

@@ -9,7 +9,6 @@ const Cuisine = ({ data }) => {
         <Flex flexDirection={"column"}>
           <Box
             bgColor={"gray.100"}
-            w={"full"}
             h={{ base: "44", lg: "56" }}
             mb={"2"}
             overflow={"hidden"}
